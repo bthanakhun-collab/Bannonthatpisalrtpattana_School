@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ข่าวประชาสัมพันธ์ | โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)</title>
+
+<style>
+/* ===== Reset ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', Tahoma, sans-serif;
+}
+
+body{
+  background:#f4f6f8;
+  color:#333;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+/* ===== Background เต็มจอ ===== */
+body{
+  background:linear-gradient(180deg,#F7F6F2,#F7F6F2);
+  min-height:100vh;
+  color:#333;
+}
+
+/* ===== Header ===== */
+header{
+  background:linear-gradient(120deg,rgba(6,25,71,.9),rgba(20,92,170,.85));
+  color:#fff;
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
+}
+
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo img{
+  width:70px;
+  height:70px;
+}
+
+.school-name{
+  font-size:22px;
+  font-weight:bold;
+}
+
+/* ===== Menu ===== */
+.hamburger{
+      display:none;
+      font-size:28px;
+      cursor:pointer;
+    }
+
+    .hamburger.active{
+      color:#ffd6d6;
+    }
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:15px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+  position:relative;
+  padding-bottom:5px;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  background:#0a2f6b;
+  transition:0.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+.hamburger{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* ===== Banner ===== */
+.banner-slider{
+  position:relative;
+  max-width:1200px;
+  height:600px;
+  margin:auto;
+  overflow:hidden;
+}
+
+.slide{
+  display:none;
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.dots{
+  position:absolute;
+  bottom:20px;
+  width:100%;
+  text-align:center;
+}
+
+.dot{
+  width:14px;
+  height:14px;
+  background:#ddd;
+  border-radius:50%;
+  display:inline-block;
+  margin:0 5px;
+  cursor:pointer;
+}
+
+.dot.active{
+  background:#0a2f6b;
+  transform:scale(1.3);
+}
+
+/* ===== Quick Menu ===== */
+.quick-menu{
+  background:#fff;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:15px;
+}
+
+.quick-menu a{
+  border:2px solid #0a2f6b;
+  color:#0a2f6b;
+  text-decoration:none;
+  padding:12px;
+  text-align:center;
+  border-radius:10px;
+  transition:.3s;
+}
+
+.quick-menu a:hover{
+  background:#0a2f6b;
+  color:#fff;
+}
+
+/* ===== Section ===== */
+.section{
+  margin:70px 0;
+}
+
+.section h3{
+  text-align:center;
+  font-size:28px;
+  color:#1c4fa1;
+  margin-bottom:40px;
+}
+
+.section h3::after{
+  content:"";
+  width:60px;
+  height:4px;
+  background:#1c4fa1;
+  display:block;
+  margin:15px auto 0;
+  border-radius:10px;
+}
+
+/* ===== ข่าวเด่น ===== */
+.news-feature{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:30px;
+  background:#fff;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,.12);
+  margin-bottom:60px;
+}
+
+.news-feature img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.feature-info{
+  padding:35px;
+}
+
+.badge{
+  display:inline-block;
+  background:#1c8fd1;
+  color:#fff;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.feature-info h4{
+  font-size:26px;
+  color:#1c4fa1;
+  margin-bottom:10px;
+}
+
+.feature-info .date{
+  color:#888;
+  margin-bottom:12px;
+}
+
+.feature-info p{
+  font-size:16px;
+  line-height:1.7;
+  color:#555;
+}
+
+.btn-read{
+  display:inline-block;
+  margin-top:18px;
+  padding:12px 26px;
+  background:linear-gradient(135deg,#1c8fd1,#1c4fa1);
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  transition:.3s;
+}
+
+.btn-read:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(28,143,209,.35);
+}
+
+/* ===== ข่าวทั่วไป ===== */
+.news-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  padding-bottom:80px;
+}
+
+.news-card{
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  transition:.3s;
+}
+
+.news-card:hover{
+  transform:translateY(-6px);
+}
+
+.news-card img{
+  width:100%;
+  aspect-ratio:4/5;   /* แนวตั้งพอดี */
+  overflow:hidden;
+  background:#eee;
+}
+
+.news-info{
+  padding:20px;
+}
+
+.news-info h4{
+  font-size:18px;
+  color:#1c4fa1;
+  margin-bottom:6px;
+}
+
+.news-info .date{
+  font-size:13px;
+  color:#888;
+  margin-bottom:8px;
+}
+
+.news-info p{
+  font-size:15px;
+  color:#555;
+}
+
+.news-info a{
+  display:inline-block;
+  margin-top:10px;
+  color:#1c8fd1;
+  text-decoration:none;
+  font-weight:500;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+  padding:20px;
+}
+
+.modal-box{
+  background:#fff;
+  width:100%;
+  max-width:1200px;
+  max-height:90vh;
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+}
+
+/* ปุ่มปิด */
+.close-btn{
+  position:absolute;
+  top:15px;
+  right:15px;
+  width:44px;
+  height:44px;
+  border:none;
+  border-radius:50%;
+  font-size:26px;
+  cursor:pointer;
+  background:#fff;
+  box-shadow:0 5px 15px rgba(0,0,0,.25);
+  z-index:10;
+}
+
+/* === แบ่งซ้าย–ขวา === */
+.modal-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  height:100%;
+}
+
+/* รูป */
+.modal-image{
+  background:#eee;
+}
+
+.modal-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* เนื้อหา */
+.modal-content{
+  padding:40px;
+  overflow-y:auto;
+}
+
+.modal-content h2{
+  color:#1c4fa1;
+  margin:12px 0;
+}
+
+.modal-content .date{
+  color:#888;
+  margin-bottom:15px;
+}
+
+
+/* ===== Footer ===== */
+.footer-wrap{
+  background:linear-gradient(90deg,#0a2f6b,#1c8fd1);
+  border-top-right-radius:160px;
+  padding:50px 60px 20px;
+  color:#fff;
+}
+
+.footer-content{
+  display:grid;
+  grid-template-columns:220px 1fr 1.2fr;
+  gap:40px;
+  align-items:flex-start;
+}
+
+.footer-logo img{
+  width:160px;
+}
+
+.footer-title h2{
+  color:#7ff2ff;
+  font-size:42px;
+  margin:0;
+}
+
+.footer-title h5{
+  color:#7ff2ff;
+  font-size:36px;
+  margin:0;
+}
+
+.footer-title p{
+  margin-top:10px;
+  line-height:1.6;
+}
+
+.footer-contact div{
+  display:flex;
+  align-items:flex-start;
+  margin-bottom:16px;
+  line-height:1.6;
+}
+
+.footer-contact svg{
+  width:20px;
+  height:20px;
+  margin-right:12px;
+  fill:#7ff2ff;
+  flex-shrink:0;
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.3);
+  margin-top:30px;
+  padding-top:15px;
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+}
+	
+/* ===================== */
+/* ===== Responsive ===== */
+/* ===================== */
+
+/* ===== Tablet & Mobile ===== */
+@media (max-width: 992px){
+
+  /* Header */
+  .header-top{
+    flex-wrap:wrap;
+  }
+
+  nav{
+    width:100%;
+  }
+
+  nav ul{
+    flex-direction:column;
+    background:linear-gradient(120deg,rgba(6,25,71,.9),rgba(20,92,170,.85));
+    width:100%;
+    margin-top:10px;
+    display:none;
+  }
+
+  nav ul.show{
+    display:flex;
+    animation:slideDown .3s ease;
+  }
+
+  nav ul li{
+    border-top:1px solid rgba(255,255,255,.2);
+  }
+
+  nav a{
+    padding:12px 15px;
+    display:block;
+  }
+
+  .hamburger{
+    display:block;
+    margin-left:auto;
+  }
+
+  /* Banner */
+  .banner-slider{
+    height:420px;
+  }
+
+  /* Cards */
+  .news-feature{
+    grid-template-columns:1fr;
+  }
+  .news-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+	
+  /* Footer */
+  .footer-content{
+    grid-template-columns:1fr;
+    text-align:left;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 576px){
+
+  .logo img{
+    width:55px;
+    height:55px;
+  }
+
+  .school-name{
+    font-size:18px;
+  }
+
+  .banner-slider{
+    height:300px;
+  }
+
+  .quick-menu{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .section-title{
+    font-size:20px;
+  }
+
+  .news-grid{
+    grid-template-columns:1fr;
+  }
+  .feature-info h4{
+    font-size:22px;
+  }
+  
+  .modal-layout{
+    grid-template-columns:1fr;
+  }
+
+  .modal-image{
+    height:35vh;
+  }
+
+  .modal-content{
+    padding:25px;
+  }
+
+  .footer-wrap{
+    padding:30px 20px;
+  }
+}
+
+/* ===== Animation ===== */
+@keyframes slideDown{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* Responsive */
+@media(max-width:900px){
+  .footer-content{
+    grid-template-columns:1fr;
+  }
+  .footer-wrap{
+    border-top-right-radius:80px;
+    padding:40px 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container header-top">
+    <div class="logo-area">
+      <div class="logo">
+       <a href="index.html"><img src="images/LOGO_school.png" width="469" height="532" alt=""></a></div>
+      <div class="school-name">
+        โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)<br>
+        <span style="font-size:16px;font-weight:400;">Bannonthatpisalratpattana School</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <ul id="menu">
+		<li><a href="https://www.moe.go.th/" target="_blank">กระทรวงศึกษาธิการ</a></li>
+        <li><a href="History of origin.html">ข้อมูลพื้นฐานโรงเรียน</a></li>
+        <li><a href="Vision Mission.html">วิสัยทัศน์/พันธกิจ</a></li>
+        <li><a href="Producer Profile.html">ประวัติผู้จัดทำ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="banner-slider">
+  <div class="slide">
+   <img src="images/Banner.jpg" width="1200" height="600" alt=""/> 
+  </div>
+  <div class="slide">
+   <img src="images/apply to study.jpg" width="6877" height="3439" alt=""/>
+  </div>
+  <div class="slide">
+   <img src="images/back to school.png" width="1200" height="600" alt=""/> 
+  </div>
+
+  <div class="dots">
+    <span class="dot" onclick="setSlide(1)"></span>
+    <span class="dot" onclick="setSlide(2)"></span>
+    <span class="dot" onclick="setSlide(3)"></span>
+  </div>
+</section>
+
+<section class="quick-menu container">
+<a href="Public relations.html">ข่าวประชาสัมพันธ์</a> 
+<a href="Personnel lnformation.html">ข้อมูลบุคลากร</a> 
+<a href="Student lnformation.html">ข้อมูลนักเรียน</a> 
+<a href="Photos of activities.html">กิจกรรม/ผลงาน</a> 
+<a href="Diagram.html">แผนผังภายในโรงเรียน</a> 
+<a href="Map.html">แผนที่</a> 
+</section>
+
+<main class="container">
+
+  <div class="section">
+    <h3>ข่าวประชาสัมพันธ์</h3>
+
+    <!-- ===== ข่าวเด่น ===== -->
+    <div class="news-feature">
+      <img src="images/apply to study.jpg" width="6877" height="3439" alt=""/>
+<div class="feature-info">
+        <span class="badge">ข่าวเด่น</span>
+        <h4>รับสมัครนักเรียน ปีการศึกษา 2569</h4>
+        <p class="date">20 มกราคม 2569</p>
+        <p>
+          โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา) เปิดรับสมัครนักเรียนระดับอนุบาล 2 - ระดับประถมศึกษาปีที่ 1
+          ผู้ปกครองสามารถสมัครได้ตั้งแต่วันที่ 10-20 มีนาคม 2569 หรือติดต่อได้ตั้งแต่วันนี้เป็นต้นไป
+        </p>
+        <a href="javascript:void(0)" class="btn-read" onclick="openModal()">อ่านรายละเอียด</a>
+      </div>
+    </div>
+    
+	<!-- Modal -->
+<div class="modal" id="newsModal">
+  <div class="modal-box">
+
+    <button class="close-btn" onclick="closeModal()">×</button>
+
+    <div class="modal-layout">
+
+      <!-- ฝั่งรูป -->
+      <div class="modal-image">
+        <img src="images/apply to study.jpg" width="6877" height="3439" alt=""/></div>
+
+      <!-- ฝั่งรายละเอียด -->
+      <div class="modal-content">
+        <span class="badge">ข่าวเด่น</span>
+        <h2>เปิดรับสมัครนักเรียน ปีการศึกษา 2569</h2>
+        <p class="date">20 มกราคม 2569</p>
+
+        <p>
+          โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา) เปิดรับสมัครนักเรียนระดับอนุบาล 2 ระดับประถมศึกษาปีที่ 1
+          ตั้งแต่วันที่ 10 – 20 มีนาคม 2569 ผู้ปกครองสามารถติดต่อสอบถามรายละเอียด
+          เพิ่มเติมได้ที่ เพจ : โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา) เบอร์ : 045-799145 
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+	  
+    <!-- ===== ข่าวทั่วไป ===== -->
+    <div class="news-grid">
+		
+	  <article class="news-card">
+       <img src="images/pu04.jpg" width="320" height="450" alt=""/>
+<div class="news-info">
+          <h4>วันแม่แห่งชาติ 2568</h4>
+          <p class="date">7 สิงหาคม 2568</p>
+          <p>กิจกรรมวันแม่แห่งชาติ ประจำปี 2568 พร้อมลงนามถวายพระพร เพื่อน้อมสำนึกในพระมหากรุณาธิคุณของสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนารถ พระบรมราชชนนีพันปีหลวง ซึ่งในกิจกรรมครั้งนี้ทางโรงเรียนได้มอบเกียรติบัตรให้กับแม่ดีเด่น กิจกรรมมอบเกียรติบัตรและรางวัลให้กับนักเรียน</p>
+        </div>
+      </article>
+		
+	 <article class="news-card">
+        <img src="images/pu05.jpg" width="320" height="450" alt=""/>
+<div class="news-info">
+          <h4>กิจกรรมวันอาสาฬหบูชา</h4>
+          <p class="date">9 กรกฎาคม 2568</p>
+          <p>วันพุธ ที่ 9 กรกฎาคม 2568 โรงเรียนบ้านโนนราตุ(พิศาลราษฎร์พัฒนา) คณะครูและ บุคลากรทางการศึกษา ได้นำนักเรียนร่วมถวายเทียนพรรษา และจตุปัจจัย เนื่องในวันอาสาพ์หนูชาและวันเข้าพรรษา เพื่อเป็นพุทธบูชา สืบสานวัฒนธรรมประเพณีอันดีงามทางศาสนาของไทย และปลูก ฟังให้นักเรียนเห็นความสำคัญของวันสำคัญทางพระพุทรศาสนาสืบไป ณ วัดสว่างบ้านโนนธาตุอำเภอมหาชนะชัย จังหวัดยโสธร</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <img src="images/pu03.jpg" width="320" height="450" alt=""/>
+<div class="news-info">
+          <h4>วันต่อต้านยาเสพติด</h4>
+          <p class="date">25 มิถุนายน 2568</p>
+          <p>กิจกรรม วันต่อต้านยาเสพติด ประจำปี 2568 ขึ้น ในวันที่ 25 มิถุนายน 2568 เพื่อร่วมรณรงค์และสร้างความตระหนักรู้ให้กับนักเรียนเกี่ยวกับพิษภัยของยาเสพติด ตลอดจนเสริมสร้าง ค่านิยมในการดำเนินชีวิตอย่างมีคุณธรรม ห่างไกลยาเสพติด มีกิจกรรมเดินรณรงค์ต่อต้านยาเสพติดในชุมชนโรงเรียนมุ่งมั่นที่จะปลูกฝังจิตสำนึกที่ดีให้แก่นักเรียน</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <img src="images/pu02.jpg" width="320" height="450" alt=""/>
+<div class="news-info">
+          <h4>วันไหว้ครู 2568</h4>
+          <p class="date">12 มิถุนายน 2568</p>
+          <p>กิจกรรมพิธีไตว้ครู ประจำปีการศึกษา 2568 มีวัตถุประสงค์เพื่อเป็นการรำลึกถึงพระคุณครูอาจารย์ ผู้ถ่ายทอดวิชาความรู้และจบรมสั่งส่อนให้กับศิษย์ ใช้เป็นคนดี ตนเก่ง และเป็นเยาวช่นที่ดีของสังคมและประเทศต่อไป " เรียนดี มีความสุข "</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <img src="images/pu01.jpg" width="320" height="450" alt=""/>
+<div class="news-info">
+          <h4>วันงดสูบบุหรี่โลก</h4>
+          <p class="date">30 พฤษภาคม 2568</p>
+          <p>กิจกรรมวันงดสูบบุหรี่และบุหรี่ไฟฟ้าโดยมีกิจกรรมเดินรณงค์ต่อต้านการสูบบุหรี่และบุหรี่ไฟฟ้า การจัดนิทรรศการให้ความรู้เกี่ยวกับโทษของบุหรี่และ บุหรี่ไฟฟ้า การประกวดวาดภาพระบายสี แต่งคำขวัญ ต่อต้านการสูบบุหรี่ และบุหรี่ไฟฟ้า</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer-wrap">
+  <div class="footer-content">
+
+    <!-- LOGO -->
+    <div class="footer-logo">
+     <img src="images/LOGO_White.png" width="140" height="159" alt=""/></div>
+
+    <!-- TITLE -->
+    <div class="footer-title">
+      <h2>โรงเรียนบ้านโนนธาตุ</h2>
+      <h5>(พิศาลราษฎร์พัฒนา)</h5>
+      สังกัดสำนักงานเขตพื้นที่การศึกษาประถมศึกษายโสรเขต 1</p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-contact">
+
+      <div>
+        <!-- location -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+        </svg>
+        ที่ตั้ง : บ้านเลขที่ 208 หมู่ 6 บ้านโนนธาตุ  
+        ตำบลฟ้าหยาด <br>อำเภอมหาชนะชัย  
+        จังหวัดยโสธร 35130
+      </div>
+
+      <div>
+        <!-- phone -->
+        <svg viewBox="0 0 24 24">
+          <path d="M6.6 10.8c1.5 3 4.6 6.1 7.6 7.6l2.5-2.5c.3-.3.8-.4 1.2-.2 1 .3 2.1.5 3.2.5.7 0 1.2.5 1.2 1.2V22c0 .7-.5 1.2-1.2 1.2C10.4 23.2.8 13.6.8 1.2.8.5 1.3 0 2 0h3.7c.7 0 1.2.5 1.2 1.2 0 1.1.2 2.2.5 3.2.1.4 0 .9-.3 1.2L6.6 10.8z"/>
+        </svg>
+        โทรศัพท์ : 045-799145
+      </div>
+
+      <div>
+        <!-- fax -->
+        <svg viewBox="0 0 24 24">
+          <path d="M19 7h-1V3H6v4H5c-1.1 0-2 .9-2 2v6h4v4h10v-4h4V9c0-1.1-.9-2-2-2zm-3 10H8v-5h8v5zm0-10H8V5h8v2z"/>
+        </svg>
+        โทรสาร : 045-799145
+      </div>
+
+      <div>
+        <!-- email -->
+        <svg viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        อีเมล : nontadschool208@gmail.com
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>Copyright © 2026 โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)</div>
+    <div>Powered by School Website</div>
+  </div>
+</footer>
+
+<script>
+/* ===== Menu ===== */
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("show");
+}
+
+/* ===== Banner ===== */
+let bannerIndex = 1;
+let bannerTimer;
+
+showBanner(bannerIndex);
+
+function showBanner(n){
+  clearTimeout(bannerTimer);
+
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+
+  if(n > slides.length){ bannerIndex = 1 }
+  if(n < 1){ bannerIndex = slides.length }
+
+  slides.forEach(s => s.style.display="none");
+  dots.forEach(d => d.classList.remove("active"));
+
+  slides[bannerIndex-1].style.display="block";
+  dots[bannerIndex-1].classList.add("active");
+
+  bannerTimer = setTimeout(()=>{
+    bannerIndex++;
+    showBanner(bannerIndex);
+  },5000);
+}
+
+function setSlide(n){
+  bannerIndex = n;
+  showBanner(bannerIndex);
+}
+
+/* ===== Card Animation ===== */
+const cards = document.querySelectorAll(".card");
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add("show"),i*200);
+    }
+  });
+},{threshold:0.3});
+
+cards.forEach(c=>observer.observe(c));
+</script>
+
+<script>
+function openModal(){
+  document.getElementById("newsModal").style.display = "flex";
+}
+
+function closeModal(){
+  document.getElementById("newsModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>

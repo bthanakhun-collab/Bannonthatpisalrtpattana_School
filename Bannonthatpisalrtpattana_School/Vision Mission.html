@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>วิสัยทัศน์/พันธกิจ | โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)</title>
+
+<style>
+/* ===== Reset ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', Tahoma, sans-serif;
+}
+
+body{
+  background:#f4f6f8;
+  color:#333;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+/* ===== Background เต็มจอ ===== */
+body{
+  background:linear-gradient(180deg,#F7F6F2,#F7F6F2);
+  min-height:100vh;
+  color:#333;
+}
+
+/* ===== Header ===== */
+header{
+  background:linear-gradient(120deg,rgba(6,25,71,.9),rgba(20,92,170,.85));
+  color:#fff;
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
+}
+
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo img{
+  width:70px;
+  height:70px;
+}
+
+.school-name{
+  font-size:22px;
+  font-weight:bold;
+}
+
+/* ===== Menu ===== */
+.hamburger{
+      display:none;
+      font-size:28px;
+      cursor:pointer;
+    }
+
+    .hamburger.active{
+      color:#ffd6d6;
+    }
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:15px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+  position:relative;
+  padding-bottom:5px;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  background:#0a2f6b;
+  transition:0.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+.hamburger{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* ===== Banner ===== */
+.banner-slider{
+  position:relative;
+  max-width:1200px;
+  height:600px;
+  margin:auto;
+  overflow:hidden;
+}
+
+.slide{
+  display:none;
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.dots{
+  position:absolute;
+  bottom:20px;
+  width:100%;
+  text-align:center;
+}
+
+.dot{
+  width:14px;
+  height:14px;
+  background:#ddd;
+  border-radius:50%;
+  display:inline-block;
+  margin:0 5px;
+  cursor:pointer;
+}
+
+.dot.active{
+  background:#0a2f6b;
+  transform:scale(1.3);
+}
+
+/* ===== Quick Menu ===== */
+.quick-menu{
+  background:#fff;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:15px;
+}
+
+.quick-menu a{
+  border:2px solid #0a2f6b;
+  color:#0a2f6b;
+  text-decoration:none;
+  padding:12px;
+  text-align:center;
+  border-radius:10px;
+  transition:.3s;
+}
+
+.quick-menu a:hover{
+  background:#0a2f6b;
+  color:#fff;
+}
+
+/* ===== Mission Section ===== */
+.history-head{
+  text-align:center;
+  margin-bottom:80px;
+}
+
+.history-head h1{
+  font-size:28px;
+  color:#1c4fa1;
+  font-weight:600;
+  position:relative;
+  display:inline-block;
+}
+
+.history-head h1::after{
+  content:"";
+  display:block;
+  width:80px;
+  height:4px;
+  background:#1c4fa1;
+  margin:14px auto 0;
+  border-radius:10px;
+  }
+	
+.school-policy-new{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+/* Head */
+.policy-head-new{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin:60px 0 30px;
+}
+
+.policy-icon-new{
+  width:52px;
+  height:52px;
+  background:#0a2f6b;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.policy-icon-new svg{
+  width:28px;
+  height:28px;
+  fill:#fff;
+}
+
+.policy-head-new h2{
+  font-size:28px;
+  color:#0a2f6b;
+}
+
+/* Vision */
+.vision-box{
+  background:#fff;
+  padding:36px;
+  border-radius:20px;
+  font-size:18px;
+  font-weight:700;
+  line-height:2;
+  box-shadow:0 14px 30px rgba(0,0,0,.08);
+}
+
+/* Grid 3 */
+.policy-grid-3-new{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+@media(max-width:900px){
+  .policy-grid-3-new{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+@media(max-width:576px){
+  .policy-grid-3-new{
+    grid-template-columns:1fr;
+  }
+}
+
+.policy-card-new{
+  background:#fff;
+  padding:24px 24px 24px 68px;
+  border-radius:18px;
+  box-shadow:0 10px 24px rgba(0,0,0,.07);
+  position:relative;
+  line-height:1.7;
+}
+
+.policy-card-new span{
+  position:absolute;
+  left:22px;
+  top:22px;
+  width:36px;
+  height:36px;
+  background:#0a2f6b;
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
+
+/* Values */
+.value-grid-new{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+}
+
+.value-card-new{
+  background:#fff;
+  padding:22px;
+  border-radius:16px;
+  box-shadow:0 10px 22px rgba(0,0,0,.06);
+}
+
+.value-card-new h4{
+  font-size:18px;
+  color:#0a2f6b;
+  margin-bottom:6px;
+}
+
+.value-card-new p{
+  font-size:15px;
+  color:#555;
+}
+
+/* Animation */
+.reveal{
+  opacity:0;
+  transform:translateY(40px) scale(.95);
+  transition:.8s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* ===== Footer ===== */
+.footer-wrap{
+  background:linear-gradient(90deg,#0a2f6b,#1c8fd1);
+  border-top-right-radius:160px;
+  padding:50px 60px 20px;
+  color:#fff;
+}
+
+.footer-content{
+  display:grid;
+  grid-template-columns:220px 1fr 1.2fr;
+  gap:40px;
+  align-items:flex-start;
+}
+
+.footer-logo img{
+  width:160px;
+}
+
+.footer-title h2{
+  color:#7ff2ff;
+  font-size:42px;
+  margin:0;
+}
+
+.footer-title h3{
+  color:#7ff2ff;
+  font-size:36px;
+  margin:0;
+}
+
+.footer-title p{
+  margin-top:10px;
+  line-height:1.6;
+}
+
+.footer-contact div{
+  display:flex;
+  align-items:flex-start;
+  margin-bottom:16px;
+  line-height:1.6;
+}
+
+.footer-contact svg{
+  width:20px;
+  height:20px;
+  margin-right:12px;
+  fill:#7ff2ff;
+  flex-shrink:0;
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.3);
+  margin-top:30px;
+  padding-top:15px;
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+}
+	
+/* ===================== */
+/* ===== Responsive ===== */
+/* ===================== */
+
+/* ===== Tablet & Mobile ===== */
+@media (max-width: 992px){
+
+  /* Header */
+  .header-top{
+    flex-wrap:wrap;
+  }
+
+  nav{
+    width:100%;
+  }
+
+  nav ul{
+    flex-direction:column;
+    background:linear-gradient(120deg,rgba(6,25,71,.9),rgba(20,92,170,.85));
+    width:100%;
+    margin-top:10px;
+    display:none;
+  }
+
+  nav ul.show{
+    display:flex;
+    animation:slideDown .3s ease;
+  }
+
+  nav ul li{
+    border-top:1px solid rgba(255,255,255,.2);
+  }
+
+  nav a{
+    padding:12px 15px;
+    display:block;
+  }
+
+  .hamburger{
+    display:block;
+    margin-left:auto;
+  }
+
+  /* Banner */
+  .banner-slider{
+    height:420px;
+  }
+
+  /* Cards */
+  .cards{
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  }
+
+  /* Footer */
+  .footer-content{
+    grid-template-columns:1fr;
+    text-align:left;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 576px){
+
+  .logo img{
+    width:55px;
+    height:55px;
+  }
+
+  .school-name{
+    font-size:18px;
+  }
+
+  .banner-slider{
+    height:300px;
+  }
+
+  .quick-menu{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .section-title{
+    font-size:20px;
+  }
+
+  .card img{
+    height:160px;
+  }
+
+  .footer-wrap{
+    padding:30px 20px;
+  }
+}
+
+/* ===== Animation ===== */
+@keyframes slideDown{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* Responsive */
+@media(max-width:900px){
+  .footer-content{
+    grid-template-columns:1fr;
+  }
+  .footer-wrap{
+    border-top-right-radius:80px;
+    padding:40px 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container header-top">
+    <div class="logo-area">
+      <div class="logo">
+       <a href="index.html"><img src="images/LOGO_school.png" width="469" height="532" alt=""></a></div>
+      <div class="school-name">
+        โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)<br>
+        <span style="font-size:16px;font-weight:400;">Bannonthatpisalratpattana School</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <ul id="menu">
+		<li><a href="https://www.moe.go.th/" target="_blank">กระทรวงศึกษาธิการ</a></li>
+        <li><a href="History of origin.html">ข้อมูลพื้นฐานโรงเรียน</a></li>
+        <li><a href="Vision Mission.html">วิสัยทัศน์/พันธกิจ</a></li>
+        <li><a href="Producer Profile.html">ประวัติผู้จัดทำ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="banner-slider">
+  <div class="slide">
+   <img src="images/Banner.jpg" width="1200" height="600" alt=""/> 
+  </div>
+  <div class="slide">
+   <img src="images/apply to study.jpg" width="6877" height="3439" alt=""/>
+  </div>
+  <div class="slide">
+   <img src="images/back to school.png" width="1200" height="600" alt=""/> 
+  </div>
+
+  <div class="dots">
+    <span class="dot" onclick="setSlide(1)"></span>
+    <span class="dot" onclick="setSlide(2)"></span>
+    <span class="dot" onclick="setSlide(3)"></span>
+  </div>
+</section>
+
+<section class="quick-menu container">
+<a href="Public relations.html">ข่าวประชาสัมพันธ์</a> 
+<a href="Personnel lnformation.html">ข้อมูลบุคลากร</a> 
+<a href="Student lnformation.html">ข้อมูลนักเรียน</a> 
+<a href="Photos of activities.html">กิจกรรม/ผลงาน</a> 
+<a href="Diagram.html">แผนผังภายในโรงเรียน</a> 
+<a href="Map.html">แผนที่</a> 
+</section>
+
+<section class="school-policy-new">
+<div class="history-head">
+    <h1>วิสัยทัศน์/พันธกิจ</h1>
+  </div>
+  <!-- วิสัยทัศน์ -->
+  <div class="policy-head-new reveal">
+    <div class="policy-icon-new">
+      <!-- Graduation Cap -->
+      <svg viewBox="0 0 24 24">
+        <path d="M12 3L1 9l11 6 9-4.9V17h2V9L12 3z"/>
+      </svg>
+    </div>
+    <h2>วิสัยทัศน์ (Vision)</h2>
+  </div>
+
+  <div class="vision-box reveal">
+    &nbsp;&nbsp;&nbsp;&nbsp;โรงเรียนมีคุณภาพได้มาตรฐาน สร้างคนดีมีความรู้ สู่ประชาคมอาเซียน
+    ดำรงชีวิตอย่างมีความสุขตามวิถีประชาธิปไตย
+    บนพื้นฐานความพอเพียงและอนุรักษ์ความเป็นไทย
+  </div>
+
+  <!-- พันธกิจ -->
+  <div class="policy-head-new reveal">
+    <div class="policy-icon-new">
+      <!-- Book -->
+      <svg viewBox="0 0 24 24">
+        <path d="M4 4h14a2 2 0 012 2v14a1 1 0 01-1 1H6a2 2 0 01-2-2V4z"/>
+      </svg>
+    </div>
+    <h2>พันธกิจ (Mission)</h2>
+  </div>
+
+  <div class="policy-grid-3-new">
+    <div class="policy-card-new reveal"><span>1</span>พัฒนาผู้เรียนให้มีคุณภาพมาตรฐาน การศึกษา</div>
+    <div class="policy-card-new reveal"><span>2</span>เสริมสร้างคุณธรรม จริยธรรม ค่านิยมที่พึงประสงค์ และสำนึกในความเป็นไทย และมีวิถีชีวิต ตามหลักปรัชญาเศรษฐกิจพอเพียง</div>
+    <div class="policy-card-new reveal"><span>3</span>พัฒนาครูและบุคลากรให้มีความรู้ ความสามารถตามมาตรฐานวิชาชีพ</div>
+    <div class="policy-card-new reveal"><span>4</span>พัฒนาแหล่งเรียนรู้และสิ่งแวดล้อมให้เอื้อต่อการจัดการเรียนรู้</div>
+    <div class="policy-card-new reveal"><span>5</span>ประสานความร่วมมือกับชุมชนในการร่วมพัฒนาการศึกษา</div>
+  </div>
+
+  <!-- เป้าประสงค์ -->
+  <div class="policy-head-new reveal">
+    <div class="policy-icon-new">
+      <!-- Target -->
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 14a4 4 0 110-8 4 4 0 010 8z"/>
+      </svg>
+    </div>
+    <h2>เป้าประสงค์ (Goal)</h2>
+  </div>
+
+  <div class="policy-grid-3-new">
+    <div class="policy-card-new reveal"><span>1</span>ผู้เรียนมีความรู้ ความสามารถ ตามมาตรฐาน</div>
+    <div class="policy-card-new reveal"><span>2</span>ผู้เรียนมีคุณธรรม จริยธรรม คุณลักษณะอันพึงประสงค์และดำเนินชีวิตตามแนวปรัชญาของเศรษฐกิจพอเพียง </div>
+    <div class="policy-card-new reveal"><span>3</span>ครูและบุคลากรทางการศึกษา มีความรู้ ความสามารถตามมาตรฐานวิชาชีพ และปฏิบัติงานได้เต็มตามศักยภาพ</div>
+    <div class="policy-card-new reveal"><span>4</span>โรงเรียนมีแหล่งเรียนรู้และสภาพแวดล้อมเอื้อต่อการเรียนรู้</div>
+    <div class="policy-card-new reveal"><span>5</span>โรงเรียนมีระบบบริหารจัดการโดยยึดหลักการมีส่วนร่วมกับชุมชนและภาคส่วนต่าง ๆ ในการพัฒนาการศึกษา</div>
+  </div>
+
+  <!-- ค่านิยม -->
+  <div class="policy-head-new reveal">
+    <div class="policy-icon-new">
+      <!-- Heart -->
+      <svg viewBox="0 0 24 24">
+      <path d="M3 21h18v-2H3v2zm2-4h4v-5H5v5zm5 0h4V9h-4v8zm5 0h4v-7h-4v7zM12 3L2 8h20L12 3z"/>
+    </svg>
+    </div>
+    <h2>ค่านิยมโรงเรียน</h2>
+  </div>
+
+  <div class="value-grid-new">
+    <div class="value-card-new reveal">
+      <h4>ความกตัญญู</h4>
+      <p>ส่งเสริมความกตัญญู ต่อพ่อแม่ ครูอาจารย์ ผู้มีพระคุณ ธรรมชาติสัตว์และสิ่งของ</p>
+    </div>
+    <div class="value-card-new reveal">
+      <h4>ซื่อสัตย์สุจริต</h4>
+      <p>ส่งเสริมความซื่อสัตย์สุจริต ความโปร่งใส และการประพฤติที่ถูกต้อง</p>
+    </div>
+    <div class="value-card-new reveal">
+      <h4>ความรับผิดชอบ</h4>
+      <p>ส่งเสริมความรับผิดชอบต่อตนเอง ต่อส่วนรวม และต่อสังคม</p>
+    </div>
+    <div class="value-card-new reveal">
+      <h4>การเรียนรู้</h4>
+      <p>มุ่งเน้นการเรียนรู้ตลอดชีวิต พัฒนาตนเองอย่างต่อเนื่อง และส่งเสริมการเรียนรู้ที่หลากหลาย</p>
+    </div>
+    <div class="value-card-new reveal">
+      <h4>การทำงานเป็นทีม</h4>
+      <p>ส่งเสริมความร่วมมือ การทำงานเป็นทีม และการช่วยเหลือซึ่งกันและกัน</p>
+    </div>
+    <div class="value-card-new reveal">
+      <h4>ความเคารพ</h4>
+      <p>ส่งเสริมความเคารพเทิดทูนต่อสถาบันชาติ ศาสนา พระมหากษัตริย์ เคารพต่อผู้อื่น ยอมรับทางความคิด และวัฒนธรรมที่แตกต่าง</p>
+    </div>
+    <div class="value-card-new reveal">
+      <h4>พอเพียง</h4>
+      <p>ส่งเสริมการดำเนินชีวิตอย่างพอเพียงตามหลักปรัชญาของเศรษฐกิจพอเพียง</p>
+    </div>
+    <div class="value-card-new reveal">
+      <h4>ความเป็นเลิศ</h4>
+      <p>มุ่งเน้นการพัฒนาตนเองสูงสุดตามศักยภาพ</p>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer-wrap">
+  <div class="footer-content">
+
+    <!-- LOGO -->
+    <div class="footer-logo">
+     <img src="images/LOGO_White.png" width="140" height="159" alt=""/></div>
+
+    <!-- TITLE -->
+    <div class="footer-title">
+      <h2>โรงเรียนบ้านโนนธาตุ</h2>
+      <h3>(พิศาลราษฎร์พัฒนา)</h3>
+      สังกัดสำนักงานเขตพื้นที่การศึกษาประถมศึกษายโสรเขต 1</p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-contact">
+
+      <div>
+        <!-- location -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+        </svg>
+        ที่ตั้ง : บ้านเลขที่ 208 หมู่ 6 บ้านโนนธาตุ  
+        ตำบลฟ้าหยาด <br>อำเภอมหาชนะชัย  
+        จังหวัดยโสธร 35130
+      </div>
+
+      <div>
+        <!-- phone -->
+        <svg viewBox="0 0 24 24">
+          <path d="M6.6 10.8c1.5 3 4.6 6.1 7.6 7.6l2.5-2.5c.3-.3.8-.4 1.2-.2 1 .3 2.1.5 3.2.5.7 0 1.2.5 1.2 1.2V22c0 .7-.5 1.2-1.2 1.2C10.4 23.2.8 13.6.8 1.2.8.5 1.3 0 2 0h3.7c.7 0 1.2.5 1.2 1.2 0 1.1.2 2.2.5 3.2.1.4 0 .9-.3 1.2L6.6 10.8z"/>
+        </svg>
+        โทรศัพท์ : 045-799145
+      </div>
+
+      <div>
+        <!-- fax -->
+        <svg viewBox="0 0 24 24">
+          <path d="M19 7h-1V3H6v4H5c-1.1 0-2 .9-2 2v6h4v4h10v-4h4V9c0-1.1-.9-2-2-2zm-3 10H8v-5h8v5zm0-10H8V5h8v2z"/>
+        </svg>
+        โทรสาร : 045-799145
+      </div>
+
+      <div>
+        <!-- email -->
+        <svg viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        อีเมล : nontadschool208@gmail.com
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>Copyright © 2026 โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)</div>
+    <div>Powered by School Website</div>
+  </div>
+</footer>
+
+<script>
+/* ===== Menu ===== */
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("show");
+}
+
+/* ===== Banner ===== */
+let bannerIndex = 1;
+let bannerTimer;
+
+showBanner(bannerIndex);
+
+function showBanner(n){
+  clearTimeout(bannerTimer);
+
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+
+  if(n > slides.length){ bannerIndex = 1 }
+  if(n < 1){ bannerIndex = slides.length }
+
+  slides.forEach(s => s.style.display="none");
+  dots.forEach(d => d.classList.remove("active"));
+
+  slides[bannerIndex-1].style.display="block";
+  dots[bannerIndex-1].classList.add("active");
+
+  bannerTimer = setTimeout(()=>{
+    bannerIndex++;
+    showBanner(bannerIndex);
+  },5000);
+}
+
+function setSlide(n){
+  bannerIndex = n;
+  showBanner(bannerIndex);
+}
+
+/* ===== Card Animation ===== */
+const cards = document.querySelectorAll(".card");
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add("show"),i*200);
+    }
+  });
+},{threshold:0.3});
+
+cards.forEach(c=>observer.observe(c));
+</script>
+<script>
+const revealItems = document.querySelectorAll('.reveal');
+
+const io = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('show'),i*120);
+    }
+  });
+},{threshold:0.25});
+
+revealItems.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

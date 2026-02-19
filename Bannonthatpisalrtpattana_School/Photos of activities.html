@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>กิจกรรม/ผลงาน | โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)</title>
+
+<style>
+/* ===== Reset ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', Tahoma, sans-serif;
+}
+
+body{
+  background:#f4f6f8;
+  color:#333;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+/* ===== Background เต็มจอ ===== */
+body{
+  background:linear-gradient(180deg,#F7F6F2,#F7F6F2);
+  min-height:100vh;
+  color:#333;
+}
+
+/* ===== Header ===== */
+header{
+  background:linear-gradient(120deg,rgba(6,25,71,.9),rgba(20,92,170,.85));
+  color:#fff;
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
+}
+
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo img{
+  width:70px;
+  height:70px;
+}
+
+.school-name{
+  font-size:22px;
+  font-weight:bold;
+}
+
+/* ===== Menu ===== */
+.hamburger{
+      display:none;
+      font-size:28px;
+      cursor:pointer;
+    }
+
+    .hamburger.active{
+      color:#ffd6d6;
+    }
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:15px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+  position:relative;
+  padding-bottom:5px;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  background:#0a2f6b;
+  transition:0.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+.hamburger{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* ===== Banner ===== */
+.banner-slider{
+  position:relative;
+  max-width:1200px;
+  height:600px;
+  margin:auto;
+  overflow:hidden;
+}
+
+.slide{
+  display:none;
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.dots{
+  position:absolute;
+  bottom:20px;
+  width:100%;
+  text-align:center;
+}
+
+.dot{
+  width:14px;
+  height:14px;
+  background:#ddd;
+  border-radius:50%;
+  display:inline-block;
+  margin:0 5px;
+  cursor:pointer;
+}
+
+.dot.active{
+  background:#0a2f6b;
+  transform:scale(1.3);
+}
+
+/* ===== Page Title (เหมือนหน้าผู้บริหาร) ===== */
+.page-title{
+  text-align:center;
+  padding:60px 20px 40px;
+  background:#f7f6f2;
+}
+
+.page-title h1{
+  font-size:28px;
+  color:#1c4fa1;
+  font-weight:600;
+  position:relative;
+  display:inline-block;
+}
+
+.page-title h1::after{
+  content:"";
+  display:block;
+  width:80px;
+  height:4px;
+  background:#1c4fa1;
+  margin:14px auto 0;
+  border-radius:10px;
+}
+
+
+/* ===== Quick Menu ===== */
+.quick-menu{
+  background:#fff;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:15px;
+}
+
+.quick-menu a{
+  border:2px solid #0a2f6b;
+  color:#0a2f6b;
+  text-decoration:none;
+  padding:12px;
+  text-align:center;
+  border-radius:10px;
+  transition:.3s;
+}
+
+.quick-menu a:hover{
+  background:#0a2f6b;
+  color:#fff;
+}
+
+/* ===== ACTIVITY GALLERY (เฉพาะส่วนนี้) ===== */
+.activity-section{
+  max-width:1400px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+.activity-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+}
+
+/* ===== ITEM ===== */
+.activity-item{
+  transition:.3s;
+}
+
+/* ===== IMAGE ===== */
+.activity-img{
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.activity-img img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+  transition:.4s;
+}
+
+.activity-item:hover img{
+  transform:scale(1.06);
+}
+
+/* ===== TEXT (ไม่มีกรอบ) ===== */
+.activity-text{
+  margin-top:14px;
+}
+
+.activity-date{
+  font-size:13px;
+  color:#9fa3b5;
+  margin-bottom:6px;
+}
+
+.activity-title{
+  font-size:16px;
+  font-weight:600;
+  color:#1c4fa1;
+  line-height:1.45;
+}
+
+/* ขีดนำหน้าคำอธิบาย */
+.activity-desc{
+  font-size:14px;
+  color:#555;
+  margin-top:6px;
+  padding-left:12px;
+  border-left:3px solid #1c8fd1;
+  line-height:1.5;
+}
+
+
+/* ===== Footer ===== */
+.footer-wrap{
+  background:linear-gradient(90deg,#0a2f6b,#1c8fd1);
+  border-top-right-radius:160px;
+  padding:50px 60px 20px;
+  color:#fff;
+}
+
+.footer-content{
+  display:grid;
+  grid-template-columns:220px 1fr 1.2fr;
+  gap:40px;
+  align-items:flex-start;
+}
+
+.footer-logo img{
+  width:160px;
+}
+
+.footer-title h2{
+  color:#7ff2ff;
+  font-size:42px;
+  margin:0;
+}
+
+.footer-title h3{
+  color:#7ff2ff;
+  font-size:36px;
+  margin:0;
+}
+
+.footer-title p{
+  margin-top:10px;
+  line-height:1.6;
+}
+
+.footer-contact div{
+  display:flex;
+  align-items:flex-start;
+  margin-bottom:16px;
+  line-height:1.6;
+}
+
+.footer-contact svg{
+  width:20px;
+  height:20px;
+  margin-right:12px;
+  fill:#7ff2ff;
+  flex-shrink:0;
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.3);
+  margin-top:30px;
+  padding-top:15px;
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+}
+	
+/* ===================== */
+/* ===== Responsive ===== */
+/* ===================== */
+
+/* ===== Tablet & Mobile ===== */
+@media (max-width: 992px){
+
+  /* Header */
+  .header-top{
+    flex-wrap:wrap;
+  }
+
+  nav{
+    width:100%;
+  }
+
+  nav ul{
+    flex-direction:column;
+    background:linear-gradient(120deg,rgba(6,25,71,.9),rgba(20,92,170,.85));
+    width:100%;
+    margin-top:10px;
+    display:none;
+  }
+
+  nav ul.show{
+    display:flex;
+    animation:slideDown .3s ease;
+  }
+
+  nav ul li{
+    border-top:1px solid rgba(255,255,255,.2);
+  }
+
+  nav a{
+    padding:12px 15px;
+    display:block;
+  }
+
+  .hamburger{
+    display:block;
+    margin-left:auto;
+  }
+
+  /* Banner */
+  .banner-slider{
+    height:420px;
+  }
+
+  /* Cards */
+  activity-grid{grid-template-columns:repeat(2,1fr);}
+
+  /* Footer */
+  .footer-content{
+    grid-template-columns:1fr;
+    text-align:left;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 576px){
+
+  .logo img{
+    width:55px;
+    height:55px;
+  }
+
+  .school-name{
+    font-size:18px;
+  }
+
+  .banner-slider{
+    height:300px;
+  }
+
+  .activity-grid{grid-template-columns:1fr;}
+}
+
+  .section-title{
+    font-size:20px;
+  }
+
+  .card img{
+    height:160px;
+  }
+
+  .footer-wrap{
+    padding:30px 20px;
+  }
+}
+
+/* ===== Animation ===== */
+@keyframes slideDown{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* Responsive */
+@media(max-width:900px){
+  .footer-content{
+    grid-template-columns:1fr;
+  }
+  .footer-wrap{
+    border-top-right-radius:80px;
+    padding:40px 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container header-top">
+    <div class="logo-area">
+      <div class="logo">
+       <a href="index.html"><img src="images/LOGO_school.png" width="469" height="532" alt=""></a></div>
+      <div class="school-name">
+        โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)<br>
+        <span style="font-size:16px;font-weight:400;">Bannonthatpisalratpattana School</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <ul id="menu">
+		<li><a href="https://www.moe.go.th/" target="_blank">กระทรวงศึกษาธิการ</a></li>
+        <li><a href="History of origin.html">ข้อมูลพื้นฐานโรงเรียน</a></li>
+        <li><a href="Vision Mission.html">วิสัยทัศน์/พันธกิจ</a></li>
+        <li><a href="Producer Profile.html">ประวัติผู้จัดทำ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="banner-slider">
+  <div class="slide">
+   <img src="images/Banner.jpg" width="1200" height="600" alt=""/> 
+  </div>
+  <div class="slide">
+   <img src="images/apply to study.jpg" width="6877" height="3439" alt=""/>
+  </div>
+  <div class="slide">
+   <img src="images/back to school.png" width="1200" height="600" alt=""/> 
+  </div>
+
+  <div class="dots">
+    <span class="dot" onclick="setSlide(1)"></span>
+    <span class="dot" onclick="setSlide(2)"></span>
+    <span class="dot" onclick="setSlide(3)"></span>
+  </div>
+</section>
+
+<section class="quick-menu container">
+  <a href="Public relations.html">ข่าวประชาสัมพันธ์</a> 
+  <a href="Personnel lnformation.html">ข้อมูลบุคลากร</a> 
+  <a href="Student lnformation.html">ข้อมูลนักเรียน</a> 
+  <a href="Photos of activities.html">กิจกรรม/ผลงาน</a> 
+  <a href="Diagram.html">แผนผังภายในโรงเรียน</a> 
+  <a href="Map.html">แผนที่</a> 
+</section>
+	
+<section class="page-title">
+  <h1>กิจกรรม/ผลงาน</h1>
+</section>
+
+<section class="activity-section">
+
+  <div class="activity-grid">
+
+    <div class="activity-item">
+      <div class="activity-img">
+       <img src="images/pt01.jpg" width="2048" height="1536" alt=""/></div>
+      <div class="activity-text">
+        <div class="activity-date">6 มกราคม 2569</div>
+        <div class="activity-title">
+          กิจกรรมวันปีใหม่และวันเด็กแห่งชาติ 2569
+        </div>
+        <div class="activity-desc">
+           เพื่อปลูกฝังให้เด็กและเยาวชนไทยเติบโตเป็นพลเมืองที่มีคุ ณภาพ มีความรักและความภาคภูมิใจในชาติ
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-item">
+      <div class="activity-img">
+      <img src="images/pt02.jpg" width="1280" height="960" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">29 ธันวาคม 2568</div>
+        <div class="activity-title">
+          กิจกรรมกีฬาสีสัมพันธ์
+        </div>
+        <div class="activity-desc">
+          จัดขึ้นเพื่อส่งเสริมความสามัคคี สร้างความสัมพันธ์อันดีระหว่างบุคคลในองค์กรหรือสถานศึกษา ลดความขัดแย้ง และผ่อนคลายความเครียดจากการทำงานหรือการเรียน
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-item">
+      <div class="activity-img">
+      <img src="images/pt03.jpg" width="2048" height="1536" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">18 ธันวาคม 2568</div>
+        <div class="activity-title">
+          กิจกรรมกีฬาเครือข่าย“เมืองฟ้าเกมส์”2568
+        </div>
+        <div class="activity-desc">
+          เพื่อส่งเสริมทักษะกีฬา ความสามัคคี และความมีน้ำใจนักกีฬา
+        </div>
+      </div>
+    </div>
+	  
+	  <div class="activity-item">
+      <div class="activity-img">
+        <img src="images/pt04.jpg" width="1280" height="960" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">2 ธันวาคม 2568</div>
+        <div class="activity-title">
+          กิจกรรมทัศนศึกษา 2568
+        </div>
+        <div class="activity-desc">
+          เพื่อขยายโลกทัศน์ ให้นักเรียนเชื่อมโยงความรู้ในห้องเรียนกับโลกจริง เกิดความเข้าใจที่ลึกซึ้งและจดจำได้ดีขึ้น พร้อมทั้งพัฒนาทักษะชีวิต
+        </div>
+      </div>
+    </div>
+	  
+	<div class="activity-item">
+      <div class="activity-img">
+      <img src="images/pt05.jpg" width="2048" height="1536" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">5 พฤศจิกายน 2568</div>
+        <div class="activity-title">
+          กิจกรรมวันลอยกระทง
+        </div>
+        <div class="activity-desc">
+          เพื่อให้นักเรียนแสดงความกตัญญูและขอขมาพระแม่คงคา
+        </div>
+      </div>
+    </div>
+	  
+	<div class="activity-item">
+      <div class="activity-img">
+      <img src="images/pt06.jpg" width="2048" height="1536" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">27 สิงหาคม 2568</div>
+        <div class="activity-title">
+           อบรมโครงการ “บุหรี่ไฟฟ้า ภัยร้ายใกล้ตัว”
+        </div>
+        <div class="activity-desc">
+          จัดขึ้นเพื่อสร้างความรู้ความเข้าใจที่ถูกต้องเกี่ยวกับอันตรายและผลกระทบของบุหรี่ไฟฟ้าที่มีต่อสุขภาพ
+        </div>
+      </div>
+    </div>
+	  
+	<div class="activity-item">
+      <div class="activity-img">
+      <img src="images/pt07.jpg" width="960" height="1280" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">8 สิงหาคม 2568</div>
+        <div class="activity-title">
+          การแข่งขันกิจกรรมโครงการ รักษ์ภาษาไทย
+        </div>
+        <div class="activity-desc">
+           ได้นำนักเรียนเข้าแข่งขันกิจกรรมโครงการ “รักษ์ภาษาไทย เนื่องในสัปดาห์วันภาษาไทยแห่งชาติ ปี 2568”
+        </div>
+      </div>
+    </div>
+ 
+	 <div class="activity-item">
+      <div class="activity-img">
+       <img src="images/pt08.jpg" width="2048" height="1536" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">7 สิงหาคม 2566</div>
+        <div class="activity-title">
+          กิจกรรมวันแม่แห่งชาติ 2568
+        </div>
+        <div class="activity-desc">
+           เนื่องในวันเฉลิมพระชนมพรรษา ในฐานะ "แม่ของแผ่นดิน"
+        </div>
+      </div>
+    </div>
+	  
+	 <div class="activity-item">
+      <div class="activity-img">
+       <img src="images/pt09.jpg" width="1620" height="1080" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">31 กรกฎาคม 2568</div>
+        <div class="activity-title">
+          กิจกรรมโครงการรักษ์ภาษาไทย
+        </div>
+        <div class="activity-desc">
+          เนื่องในสัปดาห์วันภาษาไทยแห่งชาติ ปี 2568 ระดับเครือข่ายคุณภาพการศึกษาเมืองฟ้า จำนวน 6 กิจกรรม
+        </div>
+      </div>
+    </div>
+	  
+	<div class="activity-item">
+      <div class="activity-img">
+        <img src="images/pt10.jpg" width="2048" height="1262" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">4 กรกฎาคม 2568</div>
+        <div class="activity-title">
+          กิจกรรมปลูกป่าเฉลิมพระเกียรติ
+        </div>
+        <div class="activity-desc">
+          เนื่องในวันมหามงคลเฉลิมพระชนมพรรษา 73 พรรษา. พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว
+        </div>
+      </div>
+    </div>
+	  
+	<div class="activity-item">
+      <div class="activity-img">
+      <img src="images/pt11.jpg" width="590" height="443" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">25 มิถุนายน 2568</div>
+        <div class="activity-title">
+          กิจกรรมวันต่อต้านยาเสพติด
+        </div>
+        <div class="activity-desc">
+          เพื่อร่วมรณรงค์และสร้างความตระหนักรู้ให้กับนักเรียนเกี่ยวกับพิษภัยของยาเสพติด
+        </div>
+      </div>
+    </div>
+	  
+	<div class="activity-item">
+      <div class="activity-img">
+      <img src="images/pt12.jpg" width="1280" height="721" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">20 มิถุนายน 2568</div>
+        <div class="activity-title">
+          กิจกรรมแผนเผชิญเหตุ
+        </div>
+        <div class="activity-desc">
+           ได้นำนักนักเรียนเข้าซักซ้อมแผนเผชิญเหตุ ณ โรงเรียนอนุบาลฟ้าหยาดราษฎร์นิยม
+        </div>
+      </div>
+    </div>
+	  
+	<div class="activity-item">
+      <div class="activity-img">
+      <img src="images/pt13.jpg" width="1477" height="1108" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">12 มิถุนายน 2568</div>
+        <div class="activity-title">
+          พิธีไหว้ครู2568
+        </div>
+        <div class="activity-desc">
+          แสดงความเคารพรัก ความกตัญญูรู้คุณ และระลึกถึงพระคุณของครูอาจารย์ผู้ประสิทธิ์ประสาทวิชาความรู้
+        </div>
+      </div>
+    </div>
+	  
+	<div class="activity-item">
+      <div class="activity-img">
+      <img src="images/pt14.jpg" width="2048" height="1536" alt=""/> </div>
+      <div class="activity-text">
+        <div class="activity-date">11 มีนาคม 2568</div>
+        <div class="activity-title">
+         การแข่งขัน”ประติมากรรม ป.1-3
+        </div>
+        <div class="activity-desc">
+          รางวัลชนะเลิศ อันดับ 1 งานศิลปหัตถกรรมนักเรียน ครั้งที่ 72 ปีการศึกษา 2567 ระดับเขตพื้นที่การศึกษา
+        </div>
+      </div>
+    </div>
+	  
+  </div>
+
+</section>
+
+
+<footer class="footer-wrap">
+  <div class="footer-content">
+
+    <!-- LOGO -->
+    <div class="footer-logo">
+     <img src="images/LOGO_White.png" width="140" height="159" alt=""/></div>
+
+    <!-- TITLE -->
+    <div class="footer-title">
+      <h2>โรงเรียนบ้านโนนธาตุ</h2>
+      <h3>(พิศาลราษฎร์พัฒนา)</h3>
+      สังกัดสำนักงานเขตพื้นที่การศึกษาประถมศึกษายโสรเขต 1</p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-contact">
+
+      <div>
+        <!-- location -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+        </svg>
+        ที่ตั้ง : บ้านเลขที่ 208 หมู่ 6 บ้านโนนธาตุ  
+        ตำบลฟ้าหยาด <br>อำเภอมหาชนะชัย  
+        จังหวัดยโสธร 35130
+      </div>
+
+      <div>
+        <!-- phone -->
+        <svg viewBox="0 0 24 24">
+          <path d="M6.6 10.8c1.5 3 4.6 6.1 7.6 7.6l2.5-2.5c.3-.3.8-.4 1.2-.2 1 .3 2.1.5 3.2.5.7 0 1.2.5 1.2 1.2V22c0 .7-.5 1.2-1.2 1.2C10.4 23.2.8 13.6.8 1.2.8.5 1.3 0 2 0h3.7c.7 0 1.2.5 1.2 1.2 0 1.1.2 2.2.5 3.2.1.4 0 .9-.3 1.2L6.6 10.8z"/>
+        </svg>
+        โทรศัพท์ : 045-799145
+      </div>
+
+      <div>
+        <!-- fax -->
+        <svg viewBox="0 0 24 24">
+          <path d="M19 7h-1V3H6v4H5c-1.1 0-2 .9-2 2v6h4v4h10v-4h4V9c0-1.1-.9-2-2-2zm-3 10H8v-5h8v5zm0-10H8V5h8v2z"/>
+        </svg>
+        โทรสาร : 045-799145
+      </div>
+
+      <div>
+        <!-- email -->
+        <svg viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        อีเมล : nontadschool208@gmail.com
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>Copyright © 2026 โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)</div>
+    <div>Powered by School Website</div>
+  </div>
+</footer>
+
+<script>
+/* ===== Menu ===== */
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("show");
+}
+
+/* ===== Banner ===== */
+let bannerIndex = 1;
+let bannerTimer;
+
+showBanner(bannerIndex);
+
+function showBanner(n){
+  clearTimeout(bannerTimer);
+
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+
+  if(n > slides.length){ bannerIndex = 1 }
+  if(n < 1){ bannerIndex = slides.length }
+
+  slides.forEach(s => s.style.display="none");
+  dots.forEach(d => d.classList.remove("active"));
+
+  slides[bannerIndex-1].style.display="block";
+  dots[bannerIndex-1].classList.add("active");
+
+  bannerTimer = setTimeout(()=>{
+    bannerIndex++;
+    showBanner(bannerIndex);
+  },5000);
+}
+
+function setSlide(n){
+  bannerIndex = n;
+  showBanner(bannerIndex);
+}
+
+/* ===== Card Animation ===== */
+const cards = document.querySelectorAll(".card");
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add("show"),i*200);
+    }
+  });
+},{threshold:0.3});
+
+cards.forEach(c=>observer.observe(c));
+</script>
+
+</body>
+</html>

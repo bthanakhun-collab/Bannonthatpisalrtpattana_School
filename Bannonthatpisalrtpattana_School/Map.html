@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แผนที่ | โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)</title>
+
+<style>
+/* ===== Reset ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', Tahoma, sans-serif;
+}
+
+body{
+  background:#f4f6f8;
+  color:#333;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+/* ===== Background เต็มจอ ===== */
+body{
+  background:linear-gradient(180deg,#F7F6F2,#F7F6F2);
+  min-height:100vh;
+  color:#333;
+}
+
+/* ===== Header ===== */
+header{
+  background:linear-gradient(120deg,rgba(6,25,71,.9),rgba(20,92,170,.85));
+  color:#fff;
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
+}
+
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo img{
+  width:70px;
+  height:70px;
+}
+
+.school-name{
+  font-size:22px;
+  font-weight:bold;
+}
+
+/* ===== Menu ===== */
+.hamburger{
+      display:none;
+      font-size:28px;
+      cursor:pointer;
+    }
+
+    .hamburger.active{
+      color:#ffd6d6;
+    }
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:15px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+  position:relative;
+  padding-bottom:5px;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  background:#0a2f6b;
+  transition:0.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+.hamburger{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* ===== Banner ===== */
+.banner-slider{
+  position:relative;
+  max-width:1200px;
+  height:600px;
+  margin:auto;
+  overflow:hidden;
+}
+
+.slide{
+  display:none;
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.dots{
+  position:absolute;
+  bottom:20px;
+  width:100%;
+  text-align:center;
+}
+
+.dot{
+  width:14px;
+  height:14px;
+  background:#ddd;
+  border-radius:50%;
+  display:inline-block;
+  margin:0 5px;
+  cursor:pointer;
+}
+
+.dot.active{
+  background:#0a2f6b;
+  transform:scale(1.3);
+}
+
+/* ===== Quick Menu ===== */
+.quick-menu{
+  background:#fff;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:15px;
+}
+
+.quick-menu a{
+  border:2px solid #0a2f6b;
+  color:#0a2f6b;
+  text-decoration:none;
+  padding:12px;
+  text-align:center;
+  border-radius:10px;
+  transition:.3s;
+}
+
+.quick-menu a:hover{
+  background:#0a2f6b;
+  color:#fff;
+}
+
+/* ===== Page Title (เหมือนหน้าผู้บริหาร) ===== */
+.page-title{
+  text-align:center;
+  padding:60px 20px 40px;
+  background:#f7f6f2;
+}
+
+.page-title h1{
+  font-size:28px;
+  color:#1c4fa1;
+  font-weight:600;
+  position:relative;
+  display:inline-block;
+}
+
+.page-title h1::after{
+  content:"";
+  display:block;
+  width:80px;
+  height:4px;
+  background:#1c4fa1;
+  margin:14px auto 0;
+  border-radius:10px;
+}
+
+/* ===== MAP PAGE ===== */
+.map-page{
+  max-width:1200px;
+  margin:70px auto;
+  padding:0 20px;
+  color:#1c4fa1;
+}
+
+.map-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.map-header h2{
+  font-size:32px;
+}
+
+.map-header p{
+  font-size:16px;
+  color:#b5b7c2;
+}
+
+/* Layout */
+.map-layout{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:30px;
+}
+
+/* Map */
+.map-frame{
+  position:relative;
+  background:#151821;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+.map-frame iframe{
+  width:100%;
+  height:420px;
+  border:0;
+}
+
+/* Buttons */
+.map-actions{
+  position:absolute;
+  top:16px;
+  right:16px;
+  display:flex;
+  gap:10px;
+  z-index:10;
+}
+
+.map-btn{
+  background:linear-gradient(135deg,#1c8fd1,#1c4fa1);
+  color:#fff;
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:13px;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.map-btn:hover{
+  transform:translateY(-2px);
+}
+
+.map-btn.ghost{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(6px);
+}
+
+/* Info */
+.map-info{
+  background:#fff;
+  border-radius:22px;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.info-item{
+  display:flex;
+  gap:16px;
+}
+
+.info-item .icon{
+  font-size:26px;
+  color:#1c4fa1;
+}
+
+.info-item h4{
+  font-size:17px;
+  margin-bottom:4px;
+}
+
+.info-item p{
+  font-size:14px;
+  color:#888;
+  line-height:1.6;
+}
+
+/* ===== SVG ICON ===== */
+.svg-icon{
+  width:26px;
+  height:26px;
+  fill:#1c8fd1;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+/* ===== Footer ===== */
+.footer-wrap{
+  background:linear-gradient(90deg,#0a2f6b,#1c8fd1);
+  border-top-right-radius:160px;
+  padding:50px 60px 20px;
+  color:#fff;
+}
+
+.footer-content{
+  display:grid;
+  grid-template-columns:220px 1fr 1.2fr;
+  gap:40px;
+  align-items:flex-start;
+}
+
+.footer-logo img{
+  width:160px;
+}
+
+.footer-title h2{
+  color:#7ff2ff;
+  font-size:42px;
+  margin:0;
+}
+
+.footer-title h3{
+  color:#7ff2ff;
+  font-size:36px;
+  margin:0;
+}
+
+.footer-title p{
+  margin-top:10px;
+  line-height:1.6;
+}
+
+.footer-contact div{
+  display:flex;
+  align-items:flex-start;
+  margin-bottom:16px;
+  line-height:1.6;
+}
+
+.footer-contact svg{
+  width:20px;
+  height:20px;
+  margin-right:12px;
+  fill:#7ff2ff;
+  flex-shrink:0;
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.3);
+  margin-top:30px;
+  padding-top:15px;
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+}
+	
+/* ===================== */
+/* ===== Responsive ===== */
+/* ===================== */
+
+/* ===== Tablet & Mobile ===== */
+@media (max-width: 992px){
+
+  /* Header */
+  .header-top{
+    flex-wrap:wrap;
+  }
+
+  nav{
+    width:100%;
+  }
+
+  nav ul{
+    flex-direction:column;
+    background:linear-gradient(120deg,rgba(6,25,71,.9),rgba(20,92,170,.85));
+    width:100%;
+    margin-top:10px;
+    display:none;
+  }
+
+  nav ul.show{
+    display:flex;
+    animation:slideDown .3s ease;
+  }
+
+  nav ul li{
+    border-top:1px solid rgba(255,255,255,.2);
+  }
+
+  nav a{
+    padding:12px 15px;
+    display:block;
+  }
+
+  .hamburger{
+    display:block;
+    margin-left:auto;
+  }
+
+  /* Banner */
+  .banner-slider{
+    height:420px;
+  }
+
+  /* Cards */
+  .map-layout{
+    grid-template-columns:1fr;
+  }
+  .map-frame iframe{
+    height:320px;
+  }
+
+  /* Footer */
+  .footer-content{
+    grid-template-columns:1fr;
+    text-align:left;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 576px){
+
+  .logo img{
+    width:55px;
+    height:55px;
+  }
+
+  .school-name{
+    font-size:18px;
+  }
+
+  .banner-slider{
+    height:300px;
+  }
+
+  .quick-menu{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .section-title{
+    font-size:20px;
+  }
+
+  .map-header h2{
+    font-size:26px;
+  }
+
+  .footer-wrap{
+    padding:30px 20px;
+  }
+}
+
+/* ===== Animation ===== */
+@keyframes slideDown{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* Responsive */
+@media(max-width:900px){
+  .footer-content{
+    grid-template-columns:1fr;
+  }
+  .footer-wrap{
+    border-top-right-radius:80px;
+    padding:40px 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container header-top">
+    <div class="logo-area">
+      <div class="logo">
+       <a href="index.html"><img src="images/LOGO_school.png" width="469" height="532" alt=""></a></div>
+      <div class="school-name">
+        โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)<br>
+        <span style="font-size:16px;font-weight:400;">Bannonthatpisalratpattana School</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <ul id="menu">
+		<li><a href="https://www.moe.go.th/" target="_blank">กระทรวงศึกษาธิการ</a></li>
+        <li><a href="History of origin.html">ข้อมูลพื้นฐานโรงเรียน</a></li>
+        <li><a href="Vision Mission.html">วิสัยทัศน์/พันธกิจ</a></li>
+        <li><a href="Producer Profile.html">ประวัติผู้จัดทำ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="banner-slider">
+  <div class="slide">
+   <img src="images/Banner.jpg" width="1200" height="600" alt=""/> 
+  </div>
+  <div class="slide">
+   <img src="images/apply to study.jpg" width="6877" height="3439" alt=""/>
+  </div>
+  <div class="slide">
+   <img src="images/back to school.png" width="1200" height="600" alt=""/> 
+  </div>
+
+  <div class="dots">
+    <span class="dot" onclick="setSlide(1)"></span>
+    <span class="dot" onclick="setSlide(2)"></span>
+    <span class="dot" onclick="setSlide(3)"></span>
+  </div>
+</section>
+
+<section class="quick-menu container">
+<a href="Public relations.html">ข่าวประชาสัมพันธ์</a> 
+<a href="Personnel lnformation.html">ข้อมูลบุคลากร</a> 
+<a href="Student lnformation.html">ข้อมูลนักเรียน</a> 
+<a href="Photos of activities.html">กิจกรรม/ผลงาน</a> 
+<a href="Diagram.html">แผนผังภายในโรงเรียน</a> 
+<a href="Map.html">แผนที่</a> 
+</section>
+
+<section class="page-title">
+  <h1>แผนที่ตั้งโรงเรียน</h1>
+</section>
+
+<section class="map-page">
+  <div class="map-layout">
+
+    <!-- MAP -->
+    <div class="map-frame">
+
+      <!-- ACTION BUTTON -->
+      <div class="map-actions">
+        <a href="https://www.google.com/maps?q=โรงเรียนบ้านโนนธาตุ"
+           target="_blank" class="map-btn">
+          🧭 เปิดใน Google Maps
+        </a>
+
+        <button class="map-btn ghost" onclick="openFullscreen()">
+          ⛶ เต็มจอ
+        </button>
+      </div>
+
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3844.7442818455115!2d104.25818347827783!3d15.498181146686992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3117ad5e28994fc1%3A0x61c57edf35b0d3f9!2z4LmC4Lij4LiH4LmA4Lij4Li14Lii4LiZ4Lia4LmJ4Liy4LiZ4LmC4LiZ4LiZ4LiY4Liy4LiV4Li44Lie4Li04Lio4Liy4Lil4Lij4Liy4Lip4LiO4Lij4LmM4Lie4Lix4LiS4LiZ4Liy!5e0!3m2!1sth!2sth!4v1769854834398!5m2!1sth!2sth" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- INFO -->
+    <div class="map-info">
+      <div class="info-item">
+  <svg class="svg-icon" viewBox="0 0 24 24">
+    <path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+  </svg>
+
+  <div>
+    <h4>ที่ตั้ง</h4>
+    <p>
+      บ้านเลขที่ 208 หมู่ 6 บ้านโนนธาตุ<br>
+      ตำบลฟ้าหยาด อำเภอมหาชนะชัย<br>
+      จังหวัดยโสธร 35130
+    </p>
+  </div>
+</div>
+    
+	<div class="info-item">
+  <svg class="svg-icon" viewBox="0 0 24 24">
+    <path d="M18.9 6.3c-.1-.4-.5-.8-1-.8H6.1c-.5 0-.9.4-1 .8L3 12v8c0 .6.4 1 1 1h1c.6 0 1-.4 1-1v-1h12v1c0 .6.4 1 1 1h1c.6 0 1-.4 1-1v-8l-2.1-5.7zM6.5 16c-.8 0-1.5-.7-1.5-1.5S5.7 13 6.5 13 8 13.7 8 14.5 7.3 16 6.5 16zm11 0c-.8 0-1.5-.7-1.5-1.5S16.7 13 17.5 13 19 13.7 19 14.5 18.3 16 17.5 16zM5.8 11l.8-2h10.8l.8 2H5.8z"/>
+  </svg>
+
+  <div>
+    <h4>การเดินทาง</h4>
+    <p>
+      เดินทางสะดวกโดยรถยนต์ส่วนตัวและรถจักรยานยนต์
+      มีป้ายบอกทางตลอดเส้นทาง
+    </p>
+  </div>
+</div>
+
+	<div class="info-item">
+  <svg class="svg-icon" viewBox="0 0 24 24">
+    <path d="M6.6 10.8c1.5 3 4.6 6.1 7.6 7.6l2.5-2.5c.3-.3.8-.4 1.2-.2 1 .3 2.1.5 3.2.5.7 0 1.2.5 1.2 1.2V22c0 .7-.5 1.2-1.2 1.2C10.4 23.2.8 13.6.8 1.2.8.5 1.3 0 2 0h3.7c.7 0 1.2.5 1.2 1.2 0 1.1.2 2.2.5 3.2.1.4 0 .9-.3 1.2L6.6 10.8z"/>
+  </svg>
+
+  <div>
+    <h4>ติดต่อสอบถาม</h4>
+    <p>
+      โทรศัพท์ : 045-799145<br>
+      อีเมล : nontadschool208@gmail.com
+    </p>
+  </div>
+</div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer class="footer-wrap">
+  <div class="footer-content">
+
+    <!-- LOGO -->
+    <div class="footer-logo">
+     <img src="images/LOGO_White.png" width="140" height="159" alt=""/></div>
+
+    <!-- TITLE -->
+    <div class="footer-title">
+      <h2>โรงเรียนบ้านโนนธาตุ</h2>
+      <h3>(พิศาลราษฎร์พัฒนา)</h3>
+      สังกัดสำนักงานเขตพื้นที่การศึกษาประถมศึกษายโสรเขต 1</p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-contact">
+
+      <div>
+        <!-- location -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+        </svg>
+        ที่ตั้ง : บ้านเลขที่ 208 หมู่ 6 บ้านโนนธาตุ  
+        ตำบลฟ้าหยาด <br>อำเภอมหาชนะชัย  
+        จังหวัดยโสธร 35130
+      </div>
+
+      <div>
+        <!-- phone -->
+        <svg viewBox="0 0 24 24">
+          <path d="M6.6 10.8c1.5 3 4.6 6.1 7.6 7.6l2.5-2.5c.3-.3.8-.4 1.2-.2 1 .3 2.1.5 3.2.5.7 0 1.2.5 1.2 1.2V22c0 .7-.5 1.2-1.2 1.2C10.4 23.2.8 13.6.8 1.2.8.5 1.3 0 2 0h3.7c.7 0 1.2.5 1.2 1.2 0 1.1.2 2.2.5 3.2.1.4 0 .9-.3 1.2L6.6 10.8z"/>
+        </svg>
+        โทรศัพท์ : 045-799145
+      </div>
+
+      <div>
+        <!-- fax -->
+        <svg viewBox="0 0 24 24">
+          <path d="M19 7h-1V3H6v4H5c-1.1 0-2 .9-2 2v6h4v4h10v-4h4V9c0-1.1-.9-2-2-2zm-3 10H8v-5h8v5zm0-10H8V5h8v2z"/>
+        </svg>
+        โทรสาร : 045-799145
+      </div>
+
+      <div>
+        <!-- email -->
+        <svg viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        อีเมล : nontadschool208@gmail.com
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>Copyright © 2026 โรงเรียนบ้านโนนธาตุ (พิศาลราษฎร์พัฒนา)</div>
+    <div>Powered by School Website</div>
+  </div>
+</footer>
+
+<script>
+/* ===== Menu ===== */
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("show");
+}
+
+/* ===== Banner ===== */
+let bannerIndex = 1;
+let bannerTimer;
+
+showBanner(bannerIndex);
+
+function showBanner(n){
+  clearTimeout(bannerTimer);
+
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+
+  if(n > slides.length){ bannerIndex = 1 }
+  if(n < 1){ bannerIndex = slides.length }
+
+  slides.forEach(s => s.style.display="none");
+  dots.forEach(d => d.classList.remove("active"));
+
+  slides[bannerIndex-1].style.display="block";
+  dots[bannerIndex-1].classList.add("active");
+
+  bannerTimer = setTimeout(()=>{
+    bannerIndex++;
+    showBanner(bannerIndex);
+  },5000);
+}
+
+function setSlide(n){
+  bannerIndex = n;
+  showBanner(bannerIndex);
+}
+
+/* ===== Card Animation ===== */
+const cards = document.querySelectorAll(".card");
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add("show"),i*200);
+    }
+  });
+},{threshold:0.3});
+
+cards.forEach(c=>observer.observe(c));
+</script>
+
+<script>
+function openFullscreen(){
+  const map = document.getElementById("schoolMap");
+  if(map.requestFullscreen){
+    map.requestFullscreen();
+  }
+}
+</script>
+
+</body>
+</html>
